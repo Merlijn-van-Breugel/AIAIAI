@@ -42,13 +42,13 @@ slim = tf.contrib.slim
 
 HEIGHT, WIDTH, CHANNEL = 128, 128, 3
 BATCH_SIZE = 32
-EPOCH = 100 #5000
+EPOCH = 500 #5000
 version = 'newNikes'
 newNike_path = './' + version
 
 tf.reset_default_graph()
 
-def lrelu(x, n, leak=0.2): 
+def lrelu(x, n, leak=0.3): 
     return tf.maximum(x, leak * x, name=n) 
  
 def process_data():   
@@ -69,8 +69,8 @@ def process_data():
     # sess1 = tf.Session()
     # print sess1.run(image)
     image = tf.image.random_flip_left_right(image)
-    image = tf.image.random_brightness(image, max_delta = 0.1)
-    image = tf.image.random_contrast(image, lower = 0.9, upper = 1.1)
+    image = tf.image.random_brightness(image, max_delta = 0.2)
+    image = tf.image.random_contrast(image, lower = 0.8, upper = 1.2)
     # noise = tf.Variable(tf.truncated_normal(shape = [HEIGHT,WIDTH,CHANNEL], dtype = tf.float32, stddev = 1e-3, name = 'noise')) 
     # print image.get_shape()
     size = [HEIGHT, WIDTH]
